@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import '../screens/EmployeeAttendanceScreen.dart';
 import '../screens/LoginScreen.dart';
 import '../services/AuthProvider.dart';
 
@@ -26,25 +27,19 @@ class CustomDrawer extends StatelessWidget {
                   leading: Icon(Icons.app_registration),
                   onTap: () {
                     Navigator.pop(context);
-
                   },
                 ),
               ],
             );
           } else {
-            print("custom drawer");
-            print(auth.user.toString());
-            String avatar = auth.user?.avatar as String;
-            String name = auth.user?.name as String;
-            String email = auth.user?.email as String;
-
-            print(avatar);
-            print(name);
-            print(email);
+            String avatar = auth.user?.avatar ?? '';
+            String name = auth.user?.name ?? 'Unknown';
+            String email = auth.user?.email ?? 'No email';
 
             return ListView(
               children: [
                 DrawerHeader(
+                  decoration: BoxDecoration(color: Colors.blue),
                   child: Column(
                     children: [
                       CircleAvatar(
@@ -52,20 +47,24 @@ class CustomDrawer extends StatelessWidget {
                         radius: 30,
                       ),
                       SizedBox(height: 10),
-                      Text(
-                        name,
-                        style: TextStyle(color: Colors.white),
-                      ),
+                      Text(name, style: TextStyle(color: Colors.white)),
                       SizedBox(height: 10),
-                      Text(
-                        email,
-                        style: TextStyle(color: Colors.white),
-                      ),
+                      Text(email, style: TextStyle(color: Colors.white)),
                     ],
                   ),
-                  decoration: BoxDecoration(
-                    color: Colors.blue,
-                  ),
+                ),
+                ListTile(
+                  title: Text('Employee Attendance'),
+                  leading: Icon(Icons.calendar_today),
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => EmployeeAttendanceScreen(),
+
+                      ),
+                    );
+                  },
                 ),
                 ListTile(
                   title: Text('Logout'),

@@ -39,6 +39,7 @@ dependencies:
   flutter_secure_storage: ^9.2.4
   device_info_plus: ^12.2.0
   http: ^1.5.0
+  mobile_scanner: ^7.1.3
 
 dev_dependencies:
   flutter_test:

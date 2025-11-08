@@ -8,6 +8,7 @@ class Constants {
   static const String LOGOUT_ROUTE = "/logout";
 
   static const String USER_ROUTE = "/user";
+  static const String SCAN_QR_ROUTE = "/scan-qr";
 
 
 }
